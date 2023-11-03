@@ -1,0 +1,109 @@
+﻿@model webbds.Models.MoiGioi
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/style1.css" rel="stylesheet" />
+}
+
+<section class="user">
+    <div class="user_options-container">
+        <div class="user_options-text">
+            <div class="user_options-unregistered">
+                <h2 class="user_unregistered-title">Đăng ký làm nhà môi giới của chúng tôi?</h2>
+                <p class="user_unregistered-text">Đăng ký để có những trãi nghiệm tốt nhất từ chúng tôi.</p>
+                <button style="background-color: #A0C3D2" class="user_unregistered-signup" id="signup-button">Đăng ký</button>
+            </div>
+
+            <div class="user_options-registered">
+                <h2 class="user_registered-title">Bạn là nhà môi giới</h2>
+                <p class="user_registered-text">Đăng nhập và trãi nghiệm ngay!</p>
+                <button style="background-color: #A0C3D2" class="user_registered-login" id="login-button">Đăng nhập</button>
+            </div>
+        </div>
+
+        <div class="user_options-forms" id="user_options-forms">
+
+            <div class="user_forms-login">
+                <h2 class="forms_title">Đăng nhập</h2>
+                @using (Html.BeginForm("Create", "MoiGioi", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <fieldset class="forms_fieldset">
+                        <div class="forms_field">
+                            @Html.TextBox("Email", null, new { @class = "forms_field-input", placeholder = "Tên đăng nhập", required = "required", autofocus = "autofocus" })
+                        </div>
+                        <div class="forms_field">
+                            @Html.Password("Passowd", null, new { @class = "forms_field-input", placeholder = "Mật khẩu", required = "required" })
+                        </div>
+                    </fieldset>
+                    <div class="forms_buttons">
+                        <button type="button" class="forms_buttons-forgot">Quên mật khẩu</button>
+                        <input type="submit" name="submitButton" value="Đăng nhập" class="forms_buttons-action">
+                    </div>
+                }
+            </div>
+
+            <div class="user_forms-signup">
+                <h2 class="forms_title">Đăng ký</h2>
+                @using (Html.BeginForm("Create", "MoiGioi", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="forms_form">
+                        <fieldset class="forms_fieldset">
+                            <div class="forms_field">
+                                @Html.TextBoxFor(model => model.Ten, new { @class = "forms_field-input", placeholder = "Ten", required = "required", autofocus = "autofocus" })
+                            </div>
+                            <div class="forms_field">
+                                @Html.TextBoxFor(model => model.Email, new { @class = "forms_field-input", placeholder = "Email", required = "required" })
+
+                            </div>
+                            <div class="forms_field">
+                                @Html.TextBoxFor(model => model.DienThoai, new { @class = "forms_field-input", placeholder = "Dienthoai", required = "required" })
+                            </div>
+                            <div class="forms_field">
+                                @Html.PasswordFor(model => model.Passowd, new { @class = "forms_field-input", placeholder = "Passowd", required = "required" })
+                            </div>
+                        </fieldset>
+                        <div class="forms_buttons">
+                            <input type="submit" name="submitButton" value="Đăng ký" class="forms_buttons-action">
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div style="padding-left:30px" id="notification-container" role="alert">
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+    </div>
+
+</section>
+<script src="~/Scripts/dangky.js"></script>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <script>
+    $(document).ready(function () {
+        // Show the alert if there is a ViewBag.ErrorMessage
+        var errorMessage = '@ViewBag.ErrorMessage';
+        if (errorMessage) {
+            showErrorMessage(errorMessage);
+        }
+    });
+
+    function showErrorMessage(message) {
+        var alertElement = $('<div style="padding-left:30px" class="alert alert-danger" role="alert">' + message + '</div>');
+        $('#notification-container').append(alertElement);
+
+        // Hide the alert after 5 seconds
+        setTimeout(function () {
+            alertElement.fadeOut(200, function () {
+                alertElement.remove();
+            });
+        }, 3000);
+    }
+    </script>
+}

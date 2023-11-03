@@ -1,0 +1,21 @@
+﻿@model IEnumerable<webbds.Models.BatDongSan>
+
+@{
+    ViewBag.Title = "MyProperties1";
+    Layout = "~/Views/Shared/NguoiDung_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Các bất động sản của @ViewBag.MoiGioiTen</h2>
+    <hr />
+    @foreach (var property in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">@property.TieuDe</h5>
+                <p class="card-text">@property.MoTa</p>
+                <a href="@Url.Action("CT_BDS", "Home", new { id = property.MaBatDongSan })" class="btn btn-primary">Xem chi tiết</a>
+            </div>
+        </div>
+    }
+</div>

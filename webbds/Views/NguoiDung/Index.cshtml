@@ -1,0 +1,121 @@
+﻿@model IEnumerable<webbds.Models.BatDongSan>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/NguoiDung_Layout.cshtml";
+}
+
+<script src="~/Content/slide.js"></script>
+<main>
+
+    <div class="container">
+        <div class="bg-light p-5 text-center" style="background-image: url('https://media.vneconomy.vn/w800/images/upload/2022/11/16/56c99f14-2861-4dc2-ae06-3c04c8b22a63.jpg');">
+            <h2 style="color:aliceblue !important">An tâm chọn, An tâm mua</h2>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <form action="@Url.Action("SearchProject", "Search")" method="get">
+                            <div class="input-group my-3">
+                                <input type="text" name="keyword" class="form-control" placeholder="Nhập từ khóa tìm kiếm">
+                                <button class="btn btn-light" type="submit">
+                                    <img style="width: 24px; height: 24px" src="~/Content/Images/search-interface-symbol.png" />
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6"> <img class="card-img-top rounded" src="https://cafefcdn.com/203337114487263232/2022/7/7/bat-dong-san12-16571928779574795074.jpg" alt="Hình ảnh card 2"></div>
+                    <div class="col-sm-6 ">
+                        <h5>Khu đô thị Sala</h5>
+                        <p>
+                            Khu đô thị Sala được triển khai tại phân khu chức năng số 5 và 6 của khu đô thị mới Thủ Thiêm, dự án với tổng quy mô lên đến 257ha, được đầu tư phát triển bởi Tập đoàn địa ốc Đại Quang Minh.
+                            Là nơi hội tụ Tinh hoa cuộc sống với những lợi ích về môi trường sống trong lành, tự nhiên dự án được bao bọc bởi Lâm viên sinh thái mang đến môi trường sống lý tưởng dành cho cư dân.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row pt-4">
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-4"> <img class="card-img-top" src="https://cafefcdn.com/203337114487263232/2022/7/7/bat-dong-san12-16571928779574795074.jpg" alt="Hình ảnh card 2"></div>
+                            <div class="col-sm-8 ">
+                                <h5>Vincom Landmark 81 là một tòa nhà chọc trời ở Thành phố Hồ Chí Minh</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-4"> <img class="card-img-top" src="https://cafefcdn.com/203337114487263232/2022/7/7/bat-dong-san12-16571928779574795074.jpg" alt="Hình ảnh card 2"></div>
+                            <div class="col-sm-8 ">
+                                <h5>Xa lộ Hà Nội và những điểm nóng!</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-4">
+                <ul style="background-color: #F7F5EB" class="list-group list-group-flush">
+                    <li class="list-group-item">TP. Hồ Chí Minh</li>
+                    <li class="list-group-item">Hà Nội</li>
+                    <li class="list-group-item">Hải Phòng</li>
+                    <li class="list-group-item">Đà Lạt</li>
+                    <li class="list-group-item">Cần Thơ</li>
+                    <li class="list-group-item">Huế</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--du an noi bat-->
+    <div class="container">
+        <h4 class="my-5">Dự án nổi bật</h4>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-2 col-6 mb-4">
+                    <div class="card">
+                        <a style="text-decoration: none !important; color:black" href="@Url.Action("CT_BDS", "Home", new { id = item.MaBatDongSan })">
+                            <!-- Tạo liên kết dẫn đến action CT_BDS trong controller BatDongSan với id là MaBatDongSan của sản phẩm -->
+                            <img class="card-img-top" src="@Url.Content(item.Anh)" alt="Hình ảnh card 1" height="150" width="150" >
+                            <div class="card-body">
+                                <h5 class="card-title">@item.TieuDe</h5>
+                                <p class="card-text">@item.Gia</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="container p-2"> <img src="https://cdn.mogi.vn/banner/2023/6_a85230e0-b73a-4e11-acb1-d4788b5d85a4.png" class="mx-auto d-block" style="width:100%; height:200px" /> </div>
+    <!--du an ban-->
+
+
+    <div class="container">
+        <h4 class="my-5">Dự án nổi bật</h4>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-2 col-6 mb-4">
+                    <div class="card">
+                        <a style="text-decoration: none !important; color:black" href="@Url.Action("CT_BDS", "Home", new { id = item.MaBatDongSan })">
+                            <!-- Tạo liên kết dẫn đến action CT_BDS trong controller BatDongSan với id là MaBatDongSan của sản phẩm -->
+                            <img class="card-img-top" src="@Url.Content(item.Anh)" alt="Hình ảnh card 1" height="150" width="150">
+                            <div class="card-body">
+                                <h5 class="card-title">@item.TieuDe</h5>
+                                <p class="card-text">@item.Gia</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</main>

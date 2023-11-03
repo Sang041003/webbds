@@ -1,0 +1,52 @@
+﻿@model IEnumerable<webbds.Models.NhanXet>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/NguoiDung_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DanhGia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BinhLuan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BatDongSan.TieuDe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NguoiDung.Ten)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DanhGia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BinhLuan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BatDongSan.TieuDe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NguoiDung.Ten)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaNhanXet }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaNhanXet }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaNhanXet })
+        </td>
+    </tr>
+}
+
+</table>

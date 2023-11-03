@@ -1,0 +1,84 @@
+﻿@model webbds.Models.NguoiDung
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/style1.css" rel="stylesheet" />
+}
+
+
+<section class="user">
+    <div class="user_options-container">
+        <div class="user_options-text">
+            <div class="user_options-unregistered">
+                <h2 class="user_unregistered-title">Bạn chưa có tài khoản?</h2>
+                <p class="user_unregistered-text">Đăng ký để có những trãi nghiệm tốt nhất từ chúng tôi.</p>
+                <button style="background-color: #A0C3D2" class="user_unregistered-signup" id="signup-button">Đăng ký</button>
+            </div>
+
+            <div class="user_options-registered">
+                <h2 class="user_registered-title">Bạn đã có tài khoản</h2>
+                <p class="user_registered-text">Đăng nhập và trãi nghiệm ngay!</p>
+                <button style="background-color: #A0C3D2" class="user_registered-login" id="login-button">Đăng nhập</button>
+            </div>
+        </div>
+
+        <div class="user_options-forms" id="user_options-forms">
+
+            <div class="user_forms-login">
+                <h2 class="forms_title">Đăng nhập</h2>
+                @using (Html.BeginForm("Create", "NguoiDung", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <fieldset class="forms_fieldset">
+                        <div class="forms_field">
+                            @Html.TextBox("Email", null, new { @class = "forms_field-input", placeholder = "Tên đăng nhập", required = "required", autofocus = "autofocus" })
+                        </div>
+                        <div class="forms_field">
+                            @Html.Password("Password", null, new { @class = "forms_field-input", placeholder = "Mật khẩu", required = "required" })
+                        </div>
+                    </fieldset>
+                    <div class="forms_buttons">
+                        <button type="button" class="forms_buttons-forgot">Quên mật khẩu</button>
+                        <input type="submit" name="submitButton" value="Đăng nhập" class="forms_buttons-action">
+                    </div>
+                }
+            </div>
+
+            <div class="user_forms-signup">
+                <h2 class="forms_title">Đăng ký</h2>
+                @using (Html.BeginForm("Create", "NguoiDung", FormMethod.Post))
+                {
+                    @Html.ValidationSummary(true)
+                    @Html.AntiForgeryToken()
+
+                    <div class="forms_form">
+                        <fieldset class="forms_fieldset">
+                            <div class="forms_field">
+                                @Html.TextBoxFor(model => model.Ten, new { @class = "forms_field-input", placeholder = "Ten", required = "required", autofocus = "autofocus" })
+                            </div>
+                            <div class="forms_field">
+                                @Html.TextBoxFor(model => model.Email, new { @class = "forms_field-input", placeholder = "Email", required = "required" })
+                            </div>
+                            <div class="forms_field">
+                                @Html.PasswordFor(model => model.Password, new { @class = "forms_field-input", placeholder = "Password", required = "required" })
+                            </div>
+                        </fieldset>
+                        <div class="forms_buttons">
+                            <input type="submit" name="submitButton" value="Đăng ký" class="forms_buttons-action">
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script src="~/Scripts/dangky.js"></script>
+<script>
+    var cc = @Html.Raw(Json.Encode(ViewBag.ms));
+    if (cc != null)
+    alert(cc);
+</script>

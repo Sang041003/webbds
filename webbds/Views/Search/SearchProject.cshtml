@@ -1,0 +1,22 @@
+﻿@model List<webbds.Models.BatDongSan>
+@{
+    ViewBag.Title = "SearchProject";
+    Layout = "~/Views/Shared/NguoiDung_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <hr />
+
+    @foreach (var project in Model)
+    {
+        <div class="card mb-3" style="max-width: 400px;">
+            <img src="@Url.Content(project.Anh)" class="card-img-top" alt="Property Image">
+            <div class="card-body">
+                <h5 class="card-title">@project.TieuDe</h5>
+                <p class="card-text">@project.MoTa</p>
+                <a href="@Url.Action("CT_BDS", "Home", new { id = project.MaBatDongSan })" class="btn btn-primary">Xem chi tiết</a>
+            </div>
+        </div>
+    }
+</div>
+

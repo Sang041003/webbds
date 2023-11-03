@@ -1,0 +1,28 @@
+﻿@model IEnumerable<webbds.Models.BatDongSan>
+
+@{
+    ViewBag.Title = "MyProperties";
+    Layout = "~/Views/Shared/MoiGioi_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2>Dự án của bạn</h2>
+    <hr />
+
+    <div class="row">
+        @foreach (var property in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="@Url.Content(property.Anh)" class="card-img-top" alt="Property Image">
+                    <div class="card-body">
+                        <h5 class="card-title">@property.TieuDe</h5>
+                        <p class="card-text">@property.MoTa</p>
+                        <a href="@Url.Action("CT_BDS", "Home", new { id = property.MaBatDongSan })" class="btn btn-primary">xem chi tiết</a>
+                        <a href="@Url.Action("Edit", "BatDongSan", new { id = property.MaBatDongSan })" class="btn btn-primary">chỉnh sửa</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

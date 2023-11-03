@@ -1,0 +1,128 @@
+﻿@model webbds.Models.BatDongSan
+
+@{
+    ViewBag.Title = "CT_BDS";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+}
+
+<div class="container">
+
+
+    <div class="container">
+        <div class="bg-light p-5 text-center" style="background-image: url('https://media.vneconomy.vn/w800/images/upload/2022/11/16/56c99f14-2861-4dc2-ae06-3c04c8b22a63.jpg');">
+            <h2 style="color:aliceblue !important">An tâm chọn, An tâm mua</h2>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <form action="@Url.Action("SearchProject", "Search")" method="get">
+                            <div class="input-group my-3">
+                                <input type="text" name="keyword" class="form-control" placeholder="Nhập từ khóa tìm kiếm">
+                                <button class="btn btn-light" type="submit">
+                                    <img style="width: 24px; height: 24px" src="~/Content/Images/search-interface-symbol.png" />
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class=" bg-gray bg-light shadow-lg pt-3 rounded-lg">
+        <div class="row ">
+            <div class="col-sm-5">
+                <img style="width: 98%" src="@Url.Content(Model.Anh)" />
+            </div>
+            <div class="col-sm-7">
+                <!--ten du an-->
+                <div class="pt-3">
+                    <h3 style="font-weight:600">
+                        @Html.DisplayFor(model => model.TieuDe)
+                    </h3>
+                </div>
+                <!--vị trí-->
+                <div class="pt-3">
+                    <h4>
+                        @Html.DisplayFor(model => model.ViTri)
+                    </h4>
+                </div>
+                <!--giá-->
+                <h5 style="color: red" class="pt-3">Giá từ: @((Model.Gia ?? 0).ToString("0.##")) VNĐ</h5>
+                <!--Thông tin dự án-->
+
+                <div class="row pt-3">
+                    <div class="col-sm-6">
+
+                        <div class="row">
+                            <div class="col-sm-4 text-muted ">
+
+                                <p>Tổng diện tích:</p>
+                                <p>Tiện nghi:</p>
+                                <p>Pháp lý:</p>
+
+
+                            </div>
+                            <div class="col-sm-8">
+
+                                <p>@Html.DisplayFor(model => model.DienTich) m&sup2</p>
+                                <p>@Html.DisplayFor(model => model.TienNghi)</p>
+                                <p>@Html.DisplayFor(model => model.PhapLy)</p>
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-sm-6">
+
+                        <div class="row">
+                            <div class="col-sm-5 text-muted">
+                                <p>Chủ dự án:</p>
+                                <p>Email:</p>
+                                <p>Liên hệ:</p>
+                                <p>Địa chỉ:</p>
+                            </div>
+                            <div class="col-sm-7">
+                                <p>@Html.DisplayFor(model => model.MoiGioi.Ten)</p>
+                                <p>@Html.DisplayFor(model => model.MoiGioi.Email)</p>
+                                <p>@Html.DisplayFor(model => model.MoiGioi.DienThoai)</p>
+                                <p>@Html.DisplayFor(model => model.MoiGioi.DiaChi)</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-5 pt-3 d-flex justify-content-lg-around" style="height:55px">
+                <div>
+                    @Html.ActionLink("Đặt lịch", "Create", "LienHeNguoiDung", new { id = Model.MaBatDongSan }, new { @class = "btn btn-primary" })
+                </div>
+                <button type="button" class="btn btn-success">Yêu Thích</button>
+                <button type="button" class="btn btn-danger">
+                    <a style="color:white; text-decoration:none" href="mailto:@Model.MoiGioi.Email">Liên Hệ Nhà Môi Giới</a>
+                </button>
+            </div>
+            <div class="col-sm-7">
+                <!--mô tả-->
+                <div class="pt-3">
+                    <h4>Mô tả:</h4>
+                    <p>@Html.DisplayFor(model => model.MoTa)</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--gg map-->
+    <div class="pt-3">
+        <iframe src="@Html.DisplayFor(model => model.urlmap)" width="100%" height="350"></iframe>
+    </div>
+</div>
+

@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap">
+    <style>
+        .custom-font {
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+    </style>
+</head>
+<body class="custom-font" style=" background-color: #EAE0DA; padding: 0; margin: 0">
+    <nav style="background-color: #F7F5EB !important" class="navbar navbar-expand-sm bg-light navbar-light">
+        <div class="container">
+            @Html.ActionLink("Công Ty Bất Động Sản", "Index", "MoiGioi", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="d-flex">
+                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                     
+                        <li>@Html.ActionLink("Giới thiệu", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Dự án", "MyProperties", "BatDongSan", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Đăng tin", "Create", "BatDongSan", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>
+                            @Html.ActionLink("Đăng xuất", "Index", "Home", new { area = "" }, new { @class = "btn btn-outline-dark nav-link" })
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    <footer style="background-color: #F7F5EB !important" class="bg-light">
+        <div class="mt-5 p-4">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h6>Column 1</h6>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.638858498883!2d106.66488107817302!3d10.76229123210971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ee40d3878d1%3A0xccc015efaaefb3a4!2zMjc4IEhvw6AgSOG6o28sIFBoxrDhu51uZyA0LCBRdeG6rW4gMTAsIFRow6BuaCBwaOG7kSBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2sus!4v1688471092563!5m2!1svi!2sus"
+                            width="400" height="150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="col-sm-2">
+                    <h6>Bất động sản TPHCM</h6>
+                    <div style="font-size:14px">
+                        <p>Mua bán nhà đất TPHCM</p>
+                        <p>Bán nhà quận 7</p>
+                        <p>Bán căn hộ quận 7</p>
+                        <p>Bán đất quận 9</p>
+                        <p>Bán nhà quận 10</p>
+                        <p>Bán nhà quận 8</p>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <h6>Bất động sản Hà Nội</h6>
+                    <div style="font-size:14px">
+                        <p>Bán đất Hà Nội</p>
+                        <p>Bán nhà Hà Nội</p>
+                        <p>Cho thuê nhà Hà Nội</p>
+                        <p>Chung cư Hà Nội</p>
+                        <p>Nhà đất Hà Nội</p>
+                        <p>Phòng trọ Hà Nội</p>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <h6>Mua bán bất động sản</h6>
+                    <div style="font-size:14px">
+                        <p>Bán đất Bình Dương</p>
+                        <p>Bất động sản Đà Nẵng</p>
+                        <p>Căn hộ chung cư</p>
+                        <p>Mua bán nhà đất</p>
+                        <p> Nhà đất Hải Phòng</p>
+                        <p>Sang quán cafe</p>
+                    </div>
+
+                </div>
+                <div class="col-sm-2">
+                    <h6>Cho thuê nhà đất</h6>
+                    <div style="font-size:14px">
+                        <p>Cho thuê căn hộ</p>
+                        <p>Cho thuê mặt bằng</p>
+                        <p>Cho thuê nhà nguyên căn</p>
+                        <p>Cho thuê nhà xưởng</p>
+                        <p>Cho thuê phòng trọ</p>
+                        <p>Cho thuê văn phòng</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
